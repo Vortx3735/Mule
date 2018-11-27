@@ -24,15 +24,7 @@ public class ExpDrive extends Command {
 	
 	private double moveMotorPrev;
 	private double turnMotorPrev;
-	
-	private double fodAngle;
-	private double fodMove;
-	private double fodTurn;
-	
-	private static Setting navxCo = new Setting("FOD Navx Coefficient", 2.5);
-	private static Setting navxPow = new Setting("FOD Navx Exponent", 1);
-	private static Setting fodMoveCo = new Setting("FOD Move Exponent", 1);
-	
+			
 	private static Setting moveReactivity = new Setting("Move Reactivity", 1);
 	private static Setting turnReactivity = new Setting("Turn Reactivity", 1);
 
@@ -61,21 +53,8 @@ public class ExpDrive extends Command {
     	super.execute();
 		moveSetValue = Robot.oi.getDriveMove();
 		turnSetValue = Robot.oi.getDriveTurn();
-		if(Robot.oi.getFODMag() > .1){
-			fodMove = Math.pow(Robot.oi.getFODMag(), fodMoveCo.getValue());
-			fodAngle = Robot.oi.getFODAngle();
-			//Robot.navigation.getController().setSetpoint(fodAngle);
-			
-			//fodTurn = fodMove * (Math.pow(Robot.navigation.getController().getError()/180.0, navxPow.getValue())) * navxCo.getValue();
-			
-		}else{
-			fodMove = 0;
-			fodTurn = 0;
-		}
-
 		//moveSetValue = moveSetValue + fodMove;
-		turnSetValue = turnSetValue + fodTurn;
-
+	
 		moveMotor = (moveSetValue-moveMotorPrev)*moveReactivity.getValue() + moveMotorPrev;
 		turnMotor = (turnSetValue-turnMotorPrev)*turnReactivity.getValue() + turnMotorPrev;
 
@@ -90,7 +69,6 @@ public class ExpDrive extends Command {
 //			turnMotor = turnMotor * Drive.scaledMaxTurn.getValue();		
 //		}
 		Robot.drive.normalDrive(moveMotor, turnMotor);
-		log();
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -1,7 +1,5 @@
 package org.usfirst.frc.team3735.robot;
 
-import org.usfirst.frc.team3735.robot.commands.drive.DriveMoveDistancePID;
-import org.usfirst.frc.team3735.robot.commands.drive.autonomous.MoveDistance;
 
 import org.usfirst.frc.team3735.robot.util.settings.BooleanSetting;
 
@@ -13,7 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Autonomous {
 
 
-	private Command mainCommand = new MoveDistance();
+	private Command mainCommand = null;
 
 	public Autonomous() {
 
