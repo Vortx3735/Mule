@@ -13,9 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team3735.robot.commands.drive.DriveMoveDistancePID;
 import org.usfirst.frc.team3735.robot.subsystems.Drive;
-import org.usfirst.frc.team3735.robot.subsystems.LeftDrive;
 
 /**
  * The VM is configured to automatically run this class, and to call the
